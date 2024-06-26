@@ -21,17 +21,11 @@ void ExportDataTableToCSV(const FString& DataTableInput, const FString& DataTabl
 void ExportDataTableToJson(const FString& DataTableInput, const FString& DataTableOutput)
 {
 #if WITH_EDITOR
-    if (UCompositeDataTable* CompositeDataTable = LoadObject<UCompositeDataTable>(NULL, *DataTableInput))
-    {
-        FFileHelper::SaveStringToFile(CompositeDataTable->GetTableAsJSON(), *DataTableOutput);
-        return;
-    }
-
-    if (UDataTable* DataTable = LoadObject<UDataTable>(NULL, *DataTableInput))
-    {
-        FFileHelper::SaveStringToFile(DataTable->GetTableAsJSON(), *DataTableOutput);
-        return;
-    }
+	if (UDataTable* DataTable = LoadObject<UDataTable>(NULL, *DataTableInput))
+	{
+  	FFileHelper::SaveStringToFile(DataTable->GetTableAsJSON(EDataTableExportFlags::UseJsonObjectsForStructs), *DataTableOutput);
+		return;
+	}
 #endif
 }
 

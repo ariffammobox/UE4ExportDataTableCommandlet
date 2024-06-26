@@ -3,6 +3,7 @@
 #include "Containers/Ticker.h"
 #include "UObject/UObjectGlobals.h"
 #include "Engine/DataTable.h"
+#include "Engine/CompositeDataTable.h"
 #include "Misc/FileHelper.h"
 
 DEFINE_LOG_CATEGORY_STATIC(ExportDataTableCommandlet, Log, All);
